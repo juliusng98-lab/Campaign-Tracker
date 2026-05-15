@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,239 +9,241 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --red: #E01F1F;
-    --red-dim: rgba(224,31,31,0.12);
-    --green: #4ade80;
-    --green-dim: rgba(74,222,128,0.12);
-    --yellow: #fbbf24;
-    --yellow-dim: rgba(251,191,36,0.12);
-    --pink: #f87171;
-    --pink-dim: rgba(248,113,113,0.12);
-    --bg: #000;
-    --bg1: #060606;
-    --bg2: #0a0a0a;
-    --bg3: #111;
-    --bg4: #1a1a1a;
-    --border: #111;
-    --border2: #1a1a1a;
-    --text: #e2e8f0;
-    --text2: #888;
-    --text3: #333;
-    --text4: #222;
-  }
+:root {
+–red: #E01F1F;
+–red-dim: rgba(224,31,31,0.12);
+–green: #4ade80;
+–green-dim: rgba(74,222,128,0.12);
+–yellow: #fbbf24;
+–yellow-dim: rgba(251,191,36,0.12);
+–pink: #f87171;
+–pink-dim: rgba(248,113,113,0.12);
+–bg: #000;
+–bg1: #060606;
+–bg2: #0a0a0a;
+–bg3: #111;
+–bg4: #1a1a1a;
+–border: #111;
+–border2: #1a1a1a;
+–text: #e2e8f0;
+–text2: #888;
+–text3: #333;
+–text4: #222;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    font-size: 13px;
-  }
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+font-size: 13px;
+}
 
-  /* ── LAYOUT ── */
-  #app { display: flex; min-height: 100vh; }
+/* ── LAYOUT ── */
+#app { display: flex; min-height: 100vh; }
 
-  /* ── LOGIN ── */
-  #login-screen {
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; width: 100%; background: #000;
-  }
-  .login-card {
-    background: #080808; border: 1px solid #151515; border-radius: 16px;
-    padding: 44px 40px; width: 340px; text-align: center;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.9);
-  }
-  .login-brand { font-size: 20px; font-weight: 900; color: var(--red); letter-spacing: 5px; margin-top: 10px; }
-  .login-sub { color: #2a2a2a; font-size: 10px; letter-spacing: 2px; margin-top: 3px; text-transform: uppercase; }
-  .login-pw-err { color: var(--pink); font-size: 12px; margin-top: 6px; }
+/* ── LOGIN ── */
+#login-screen {
+display: flex; align-items: center; justify-content: center;
+min-height: 100vh; width: 100%; background: #000;
+}
+.login-card {
+background: #080808; border: 1px solid #151515; border-radius: 16px;
+padding: 44px 40px; width: 340px; text-align: center;
+box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+}
+.login-brand { font-size: 20px; font-weight: 900; color: var(–red); letter-spacing: 5px; margin-top: 10px; }
+.login-sub { color: #2a2a2a; font-size: 10px; letter-spacing: 2px; margin-top: 3px; text-transform: uppercase; }
+.login-pw-err { color: var(–pink); font-size: 12px; margin-top: 6px; }
 
-  /* ── SIDEBAR ── */
-  #sidebar {
-    width: 216px; background: var(--bg1); border-right: 1px solid #0f0f0f;
-    display: flex; flex-direction: column; position: sticky; top: 0;
-    height: 100vh; flex-shrink: 0; overflow-y: auto;
-  }
-  .side-head {
-    padding: 22px 16px 14px; text-align: center; border-bottom: 1px solid #0f0f0f;
-  }
-  .side-brand { font-size: 20px; font-weight: 900; color: var(--red); letter-spacing: 5px; margin-top: 8px; }
-  .side-sub { font-size: 8px; color: #222; letter-spacing: 3px; text-transform: uppercase; }
-  .sec-label-side { font-size: 8px; color: #222; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; padding-left: 4px; }
-  .outlet-section { padding: 10px 10px 4px; }
-  .outlet-tab {
-    display: flex; align-items: center; gap: 7px; padding: 6px 8px;
-    border-radius: 6px; cursor: pointer; color: var(--text3); margin-bottom: 2px; font-size: 11px; line-height: 1.3;
-  }
-  .outlet-tab.active { background: var(--red-dim); color: var(--red); }
-  .outlet-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
-  nav { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 2px; }
-  .nav-item {
-    display: flex; align-items: center; gap: 10px; padding: 9px 10px;
-    border-radius: 6px; cursor: pointer; color: var(--text3); font-size: 12px;
-  }
-  .nav-item:hover { color: #555; }
-  .nav-item.active { background: var(--bg3); color: var(--text); }
-  .nav-item.red { color: var(--red); margin-top: 6px; }
-  .nav-icon { width: 18px; font-size: 14px; }
-  .sidebar-bottom { padding: 8px 14px; }
-  .lang-row { display: flex; gap: 6px; margin-bottom: 8px; }
-  .lang-btn {
-    flex: 1; text-align: center; padding: 4px 0; border-radius: 6px; cursor: pointer;
-    font-size: 11px; border: 1px solid var(--bg4); color: var(--text3);
-  }
-  .lang-btn.active { border-color: var(--red); color: var(--red); }
-  .logout-btn {
-    color: #222; font-size: 11px; text-align: center; cursor: pointer; padding: 6px;
-  }
-  .logout-btn:hover { color: var(--text3); }
+/* ── SIDEBAR ── */
+#sidebar {
+width: 216px; background: var(–bg1); border-right: 1px solid #0f0f0f;
+display: flex; flex-direction: column; position: sticky; top: 0;
+height: 100vh; flex-shrink: 0; overflow-y: auto;
+}
+.side-head {
+padding: 22px 16px 14px; text-align: center; border-bottom: 1px solid #0f0f0f;
+}
+.side-brand { font-size: 20px; font-weight: 900; color: var(–red); letter-spacing: 5px; margin-top: 8px; }
+.side-sub { font-size: 8px; color: #222; letter-spacing: 3px; text-transform: uppercase; }
+.sec-label-side { font-size: 8px; color: #222; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; padding-left: 4px; }
+.outlet-section { padding: 10px 10px 4px; }
+.outlet-tab {
+display: flex; align-items: center; gap: 7px; padding: 6px 8px;
+border-radius: 6px; cursor: pointer; color: var(–text3); margin-bottom: 2px; font-size: 11px; line-height: 1.3;
+}
+.outlet-tab.active { background: var(–red-dim); color: var(–red); }
+.outlet-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+nav { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 2px; }
+.nav-item {
+display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+border-radius: 6px; cursor: pointer; color: var(–text3); font-size: 12px;
+}
+.nav-item:hover { color: #555; }
+.nav-item.active { background: var(–bg3); color: var(–text); }
+.nav-item.red { color: var(–red); margin-top: 6px; }
+.nav-icon { width: 18px; font-size: 14px; }
+.sidebar-bottom { padding: 8px 14px; }
+.lang-row { display: flex; gap: 6px; margin-bottom: 8px; }
+.lang-btn {
+flex: 1; text-align: center; padding: 4px 0; border-radius: 6px; cursor: pointer;
+font-size: 11px; border: 1px solid var(–bg4); color: var(–text3);
+}
+.lang-btn.active { border-color: var(–red); color: var(–red); }
+.logout-btn {
+color: #222; font-size: 11px; text-align: center; cursor: pointer; padding: 6px;
+}
+.logout-btn:hover { color: var(–text3); }
 
-  /* ── MAIN ── */
-  #main { flex: 1; overflow-y: auto; min-width: 0; }
-  .page { padding: 28px 32px; max-width: 1060px; }
-  .page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-  .page-title { font-size: 20px; font-weight: 700; color: #f1f5f9; }
-  .page-sub { color: #2a2a2a; font-size: 12px; margin-top: 3px; }
+/* ── MAIN ── */
+#main { flex: 1; overflow-y: auto; min-width: 0; }
+.page { padding: 28px 32px; max-width: 1060px; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.page-title { font-size: 20px; font-weight: 700; color: #f1f5f9; }
+.page-sub { color: #2a2a2a; font-size: 12px; margin-top: 3px; }
 
-  /* ── SHARED COMPONENTS ── */
-  input, select, button { font-family: 'DM Sans', sans-serif; }
-  .inp {
-    width: 100%; background: var(--bg3); border: 1px solid var(--border2);
-    border-radius: 8px; padding: 10px 13px; color: var(--text); font-size: 13px;
-    outline: none; box-sizing: border-box;
-  }
-  .inp:focus { border-color: #333; }
-  .btn-red {
-    width: 100%; background: var(--red); border: none; border-radius: 8px;
-    padding: 12px 0; color: #fff; font-size: 13px; font-weight: 700;
-    cursor: pointer; margin-top: 14px; letter-spacing: 0.5px;
-  }
-  .btn-red:hover { background: #c91a1a; }
-  .lbl { font-size: 9px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; display: block; }
-  .sec-label { font-size: 9px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 9px; }
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 13px; padding: 24px; margin-bottom: 18px; }
-  .picker {
-    background: var(--bg2); border: 1px solid var(--border2); border-radius: 7px;
-    padding: 7px 11px; color: #555; font-size: 12px; outline: none;
-  }
-  .t-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th {
-    padding: 8px 11px; text-align: left; color: var(--text4); font-weight: 700;
-    border-bottom: 1px solid var(--border); font-size: 9px; letter-spacing: 1px;
-    text-transform: uppercase; white-space: nowrap;
-  }
-  td { padding: 8px 11px; color: var(--text2); border-bottom: 1px solid #090909; }
-  tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
-  .chip {
-    padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
-  }
-  .chip-green { background: var(--green-dim); color: var(--green); }
-  .chip-yellow { background: var(--yellow-dim); color: var(--yellow); }
-  .chip-red { background: var(--pink-dim); color: var(--pink); }
-  .chip-gray { background: rgba(100,116,139,0.12); color: #555; }
-  .tog {
-    padding: 6px 13px; border-radius: 6px; cursor: pointer; font-size: 11px;
-    font-weight: 700; border: 1px solid var(--border2); color: var(--text3);
-    user-select: none;
-  }
-  .tog.yes { background: var(--green-dim); color: var(--green); border-color: var(--green); }
-  .tog.no  { background: var(--pink-dim); color: var(--pink); border-color: var(--pink); }
-  .del-btn {
-    background: var(--pink-dim); border: 1px solid rgba(248,113,113,0.2);
-    border-radius: 6px; color: var(--pink); cursor: pointer; padding: 3px 8px; font-size: 10px;
-  }
-  .del-btn:hover { background: rgba(248,113,113,0.2); }
+/* ── SHARED COMPONENTS ── */
+input, select, button { font-family: ‘DM Sans’, sans-serif; }
+.inp {
+width: 100%; background: var(–bg3); border: 1px solid var(–border2);
+border-radius: 8px; padding: 10px 13px; color: var(–text); font-size: 13px;
+outline: none; box-sizing: border-box;
+}
+.inp:focus { border-color: #333; }
+.btn-red {
+width: 100%; background: var(–red); border: none; border-radius: 8px;
+padding: 12px 0; color: #fff; font-size: 13px; font-weight: 700;
+cursor: pointer; margin-top: 14px; letter-spacing: 0.5px;
+}
+.btn-red:hover { background: #c91a1a; }
+.lbl { font-size: 9px; color: var(–text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+.sec-label { font-size: 9px; color: var(–red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 9px; }
+.card { background: var(–bg2); border: 1px solid var(–border); border-radius: 13px; padding: 24px; margin-bottom: 18px; }
+.picker {
+background: var(–bg2); border: 1px solid var(–border2); border-radius: 7px;
+padding: 7px 11px; color: #555; font-size: 12px; outline: none;
+}
+.t-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(–border); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th {
+padding: 8px 11px; text-align: left; color: var(–text4); font-weight: 700;
+border-bottom: 1px solid var(–border); font-size: 9px; letter-spacing: 1px;
+text-transform: uppercase; white-space: nowrap;
+}
+td { padding: 8px 11px; color: var(–text2); border-bottom: 1px solid #090909; }
+tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+.chip {
+padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+}
+.chip-green { background: var(–green-dim); color: var(–green); }
+.chip-yellow { background: var(–yellow-dim); color: var(–yellow); }
+.chip-red { background: var(–pink-dim); color: var(–pink); }
+.chip-gray { background: rgba(100,116,139,0.12); color: #555; }
+.tog {
+padding: 6px 13px; border-radius: 6px; cursor: pointer; font-size: 11px;
+font-weight: 700; border: 1px solid var(–border2); color: var(–text3);
+user-select: none;
+}
+.tog.yes { background: var(–green-dim); color: var(–green); border-color: var(–green); }
+.tog.no  { background: var(–pink-dim); color: var(–pink); border-color: var(–pink); }
+.del-btn {
+background: var(–pink-dim); border: 1px solid rgba(248,113,113,0.2);
+border-radius: 6px; color: var(–pink); cursor: pointer; padding: 3px 8px; font-size: 10px;
+}
+.del-btn:hover { background: rgba(248,113,113,0.2); }
 
-  /* ── KPI CARDS ── */
-  .kpi-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-  .kpi-card {
-    flex: 1 1 120px; background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px 18px;
-  }
-  .kpi-val { font-size: 32px; font-weight: 900; }
-  .kpi-lbl { color: var(--text3); font-size: 10px; letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
+/* ── KPI CARDS ── */
+.kpi-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.kpi-card {
+flex: 1 1 120px; background: var(–bg2); border: 1px solid var(–border);
+border-radius: 10px; padding: 16px 18px;
+}
+.kpi-val { font-size: 32px; font-weight: 900; }
+.kpi-lbl { color: var(–text3); font-size: 10px; letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
 
-  /* ── CHECKLIST ── */
-  .check-item {
-    display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);
-  }
-  .check-num {
-    width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); color: var(--red);
-    display: flex; align-items: center; justify-content: center; font-size: 11px;
-    font-weight: 700; flex-shrink: 0;
-  }
-  .check-text { flex: 1; color: #bbb; font-size: 13px; line-height: 1.4; }
-  .check-btns { display: flex; gap: 6px; flex-shrink: 0; }
+/* ── CHECKLIST ── */
+.check-item {
+display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(–border);
+}
+.check-num {
+width: 26px; height: 26px; border-radius: 50%; background: var(–red-dim); color: var(–red);
+display: flex; align-items: center; justify-content: center; font-size: 11px;
+font-weight: 700; flex-shrink: 0;
+}
+.check-text { flex: 1; color: #bbb; font-size: 13px; line-height: 1.4; }
+.check-btns { display: flex; gap: 6px; flex-shrink: 0; }
 
-  /* ── RESULT CARD ── */
-  .result-card {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
-    padding: 32px; max-width: 460px; text-align: center;
-  }
-  .result-icon { font-size: 52px; margin-bottom: 8px; }
-  .result-grade { font-size: 34px; font-weight: 900; letter-spacing: 4px; margin-bottom: 6px; }
-  .result-grade.pass { color: var(--green); }
-  .result-grade.fail { color: var(--pink); }
-  .result-meta { color: #555; margin-bottom: 4px; font-size: 13px; }
-  .result-desc { color: var(--text3); font-size: 12px; margin-bottom: 24px; }
-  .result-item { display: flex; gap: 8px; text-align: left; padding: 9px 0; border-bottom: 1px solid var(--border); }
-  .result-item-icon { font-weight: 700; flex-shrink: 0; }
-  .result-item-text { color: #aaa; font-size: 12px; }
+/* ── RESULT CARD ── */
+.result-card {
+background: var(–bg2); border: 1px solid var(–border); border-radius: 14px;
+padding: 32px; max-width: 460px; text-align: center;
+}
+.result-icon { font-size: 52px; margin-bottom: 8px; }
+.result-grade { font-size: 34px; font-weight: 900; letter-spacing: 4px; margin-bottom: 6px; }
+.result-grade.pass { color: var(–green); }
+.result-grade.fail { color: var(–pink); }
+.result-meta { color: #555; margin-bottom: 4px; font-size: 13px; }
+.result-desc { color: var(–text3); font-size: 12px; margin-bottom: 24px; }
+.result-item { display: flex; gap: 8px; text-align: left; padding: 9px 0; border-bottom: 1px solid var(–border); }
+.result-item-icon { font-weight: 700; flex-shrink: 0; }
+.result-item-text { color: #aaa; font-size: 12px; }
 
-  /* ── MANAGE ── */
-  .outlet-row { border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-bottom: 4px; }
-  .outlet-row-head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 0; cursor: pointer;
-  }
-  .outlet-name { font-weight: 700; color: #e2e8f0; font-size: 14px; }
-  .outlet-count { color: var(--text3); font-size: 11px; margin-left: 8px; }
-  .outlet-body { padding-left: 20px; padding-bottom: 12px; }
-  .stylist-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #0d0d0d; }
-  .stylist-avatar {
-    width: 28px; height: 28px; border-radius: 50%; background: var(--red);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 12px; color: #fff; flex-shrink: 0;
-  }
-  .stylist-name { flex: 1; color: #e2e8f0; font-weight: 600; font-size: 13px; }
-  .stylist-passes { color: var(--green); font-size: 11px; margin-right: 8px; }
+/* ── MANAGE ── */
+.outlet-row { border-bottom: 1px solid var(–border); padding-bottom: 4px; margin-bottom: 4px; }
+.outlet-row-head {
+display: flex; align-items: center; justify-content: space-between;
+padding: 10px 0; cursor: pointer;
+}
+.outlet-name { font-weight: 700; color: #e2e8f0; font-size: 14px; }
+.outlet-count { color: var(–text3); font-size: 11px; margin-left: 8px; }
+.outlet-body { padding-left: 20px; padding-bottom: 12px; }
+.stylist-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #0d0d0d; }
+.stylist-avatar {
+width: 28px; height: 28px; border-radius: 50%; background: var(–red);
+display: flex; align-items: center; justify-content: center;
+font-weight: 700; font-size: 12px; color: #fff; flex-shrink: 0;
+}
+.stylist-name { flex: 1; color: #e2e8f0; font-weight: 600; font-size: 13px; }
+.stylist-passes { color: var(–green); font-size: 11px; margin-right: 8px; }
 
-  /* ── MODAL ── */
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.88);
-    display: flex; align-items: center; justify-content: center; z-index: 200;
-  }
-  .modal-box {
-    background: var(--bg2); border: 1px solid var(--border2); border-radius: 14px;
-    padding: 28px; width: 400px; max-width: 92vw;
-  }
-  .modal-title { font-size: 16px; font-weight: 700; color: #f1f5f9; margin-bottom: 20px; }
-  .modal-hint { background: var(--bg3); border-radius: 8px; padding: 10px 12px; font-size: 11px; color: #555; margin-bottom: 16px; line-height: 1.6; }
-  .modal-btns { display: flex; gap: 8px; }
-  .btn-cancel {
-    flex: 1; background: transparent; border: 1px solid var(--border2); border-radius: 8px;
-    padding: 12px 0; color: #444; font-size: 13px; cursor: pointer;
-  }
-  .btn-cancel:hover { border-color: #333; color: #555; }
-  .tog-row { display: flex; gap: 8px; margin-bottom: 14px; }
-  .tog-row .tog { flex: 1; text-align: center; }
+/* ── MODAL ── */
+.modal-overlay {
+position: fixed; inset: 0; background: rgba(0,0,0,0.88);
+display: flex; align-items: center; justify-content: center; z-index: 200;
+}
+.modal-box {
+background: var(–bg2); border: 1px solid var(–border2); border-radius: 14px;
+padding: 28px; width: 400px; max-width: 92vw;
+}
+.modal-title { font-size: 16px; font-weight: 700; color: #f1f5f9; margin-bottom: 20px; }
+.modal-hint { background: var(–bg3); border-radius: 8px; padding: 10px 12px; font-size: 11px; color: #555; margin-bottom: 16px; line-height: 1.6; }
+.modal-btns { display: flex; gap: 8px; }
+.btn-cancel {
+flex: 1; background: transparent; border: 1px solid var(–border2); border-radius: 8px;
+padding: 12px 0; color: #444; font-size: 13px; cursor: pointer;
+}
+.btn-cancel:hover { border-color: #333; color: #555; }
+.tog-row { display: flex; gap: 8px; margin-bottom: 14px; }
+.tog-row .tog { flex: 1; text-align: center; }
 
-  /* ── SVG LOGO ── */
-  .apt-logo svg { display: block; }
+/* ── SVG LOGO ── */
+.apt-logo svg { display: block; }
 
-  /* ── BAR ── */
-  .bar-wrap { display: flex; align-items: center; gap: 8px; }
-  .bar-bg { flex: 1; height: 5px; background: var(--bg3); border-radius: 3px; min-width: 40px; }
-  .bar-fill { height: 5px; border-radius: 3px; }
+/* ── BAR ── */
+.bar-wrap { display: flex; align-items: center; gap: 8px; }
+.bar-bg { flex: 1; height: 5px; background: var(–bg3); border-radius: 3px; min-width: 40px; }
+.bar-fill { height: 5px; border-radius: 3px; }
 
-  /* hidden */
-  .hidden { display: none !important; }
+/* hidden */
+.hidden { display: none !important; }
 </style>
+
 </head>
 <body>
 
 <!-- ── LOGIN ── -->
+
 <div id="login-screen">
   <div class="login-card">
     <div class="login-brand">APT <span style="color:#fff;font-weight:300">HAIR SALON</span></div>
@@ -258,104 +261,113 @@
 </div>
 
 <!-- ── DASHBOARD ── -->
+
 <div id="app" class="hidden">
 
   <!-- SIDEBAR -->
+
   <div id="sidebar">
     <div class="side-head">
       <div class="side-brand">APT</div>
       <div class="side-sub">HAIR SALON</div>
     </div>
 
-    <div class="outlet-section">
-      <div class="sec-label-side" data-en="OUTLET" data-zh="分店">OUTLET</div>
-      <div id="outlet-tabs"></div>
-    </div>
+```
+<div class="outlet-section">
+  <div class="sec-label-side" data-en="OUTLET" data-zh="分店">OUTLET</div>
+  <div id="outlet-tabs"></div>
+</div>
 
-    <nav>
-      <div class="nav-item active" data-screen="dashboard" onclick="switchScreen('dashboard')">
-        <span class="nav-icon">◈</span><span data-en="Dashboard" data-zh="总览">Dashboard</span>
-      </div>
-      <div class="nav-item" data-screen="checklist" onclick="switchScreen('checklist')">
-        <span class="nav-icon">✦</span><span data-en="Checklist" data-zh="检查表">Checklist</span>
-      </div>
-      <div class="nav-item" data-screen="manage" onclick="switchScreen('manage')">
-        <span class="nav-icon">❋</span><span data-en="Manage" data-zh="管理">Manage</span>
-      </div>
-      <div class="nav-item red" onclick="openReportModal()">
-        <span class="nav-icon">⬇</span><span data-en="Export PDF" data-zh="导出报告">Export PDF</span>
-      </div>
-    </nav>
+<nav>
+  <div class="nav-item active" data-screen="dashboard" onclick="switchScreen('dashboard')">
+    <span class="nav-icon">◈</span><span data-en="Dashboard" data-zh="总览">Dashboard</span>
+  </div>
+  <div class="nav-item" data-screen="checklist" onclick="switchScreen('checklist')">
+    <span class="nav-icon">✦</span><span data-en="Checklist" data-zh="检查表">Checklist</span>
+  </div>
+  <div class="nav-item" data-screen="manage" onclick="switchScreen('manage')">
+    <span class="nav-icon">❋</span><span data-en="Manage" data-zh="管理">Manage</span>
+  </div>
+  <div class="nav-item red" onclick="openReportModal()">
+    <span class="nav-icon">⬇</span><span data-en="Export PDF" data-zh="导出报告">Export PDF</span>
+  </div>
+</nav>
 
-    <div class="sidebar-bottom">
-      <div class="lang-row">
-        <span class="lang-btn active" onclick="setLang('en')">EN</span>
-        <span class="lang-btn" onclick="setLang('zh')">中</span>
-      </div>
-      <div class="logout-btn" onclick="doLogout()" data-en="Logout" data-zh="退出">Logout</div>
-    </div>
+<div class="sidebar-bottom">
+  <div class="lang-row">
+    <span class="lang-btn active" onclick="setLang('en')">EN</span>
+    <span class="lang-btn" onclick="setLang('zh')">中</span>
+  </div>
+  <div class="logout-btn" onclick="doLogout()" data-en="Logout" data-zh="退出">Logout</div>
+</div>
+```
+
   </div>
 
   <!-- MAIN -->
+
   <div id="main">
 
-    <!-- DASHBOARD -->
-    <div id="screen-dashboard" class="page">
-      <div class="page-head">
-        <div>
-          <div class="page-title" data-en="Performance Dashboard" data-zh="绩效总览">Performance Dashboard</div>
-          <div class="page-sub" id="dash-outlet-name"></div>
-        </div>
-        <select class="picker" id="filter-month" onchange="renderDashboard()"></select>
-      </div>
-      <div class="kpi-row" id="kpi-row"></div>
-      <div style="margin-bottom:24px">
-        <div class="sec-label" data-en="Stylist Performance" data-zh="发型师绩效">Stylist Performance</div>
-        <div class="t-wrap"><table id="stylist-table"><thead><tr id="stylist-thead"></tr></thead><tbody id="stylist-tbody"></tbody></table></div>
-      </div>
-      <div>
-        <div class="sec-label" data-en="Recent Entries" data-zh="最新记录">Recent Entries</div>
-        <div class="t-wrap"><table id="entries-table"><thead><tr id="entries-thead"></tr></thead><tbody id="entries-tbody"></tbody></table></div>
-      </div>
+```
+<!-- DASHBOARD -->
+<div id="screen-dashboard" class="page">
+  <div class="page-head">
+    <div>
+      <div class="page-title" data-en="Performance Dashboard" data-zh="绩效总览">Performance Dashboard</div>
+      <div class="page-sub" id="dash-outlet-name"></div>
     </div>
+    <select class="picker" id="filter-month" onchange="renderDashboard()"></select>
+  </div>
+  <div class="kpi-row" id="kpi-row"></div>
+  <div style="margin-bottom:24px">
+    <div class="sec-label" data-en="Stylist Performance" data-zh="发型师绩效">Stylist Performance</div>
+    <div class="t-wrap"><table id="stylist-table"><thead><tr id="stylist-thead"></tr></thead><tbody id="stylist-tbody"></tbody></table></div>
+  </div>
+  <div>
+    <div class="sec-label" data-en="Recent Entries" data-zh="最新记录">Recent Entries</div>
+    <div class="t-wrap"><table id="entries-table"><thead><tr id="entries-thead"></tr></thead><tbody id="entries-tbody"></tbody></table></div>
+  </div>
+</div>
 
-    <!-- CHECKLIST -->
-    <div id="screen-checklist" class="page hidden">
-      <div class="page-head">
-        <div>
-          <div class="page-title" data-en="Daily Checklist" data-zh="每日检查表">Daily Checklist</div>
-          <div class="page-sub" id="check-outlet-name"></div>
-        </div>
-      </div>
-      <div id="checklist-content"></div>
+<!-- CHECKLIST -->
+<div id="screen-checklist" class="page hidden">
+  <div class="page-head">
+    <div>
+      <div class="page-title" data-en="Daily Checklist" data-zh="每日检查表">Daily Checklist</div>
+      <div class="page-sub" id="check-outlet-name"></div>
     </div>
+  </div>
+  <div id="checklist-content"></div>
+</div>
 
-    <!-- MANAGE -->
-    <div id="screen-manage" class="page hidden">
-      <div class="page-head">
-        <div>
-          <div class="page-title" data-en="Manage Outlets & Stylists" data-zh="管理分店与发型师">Manage Outlets &amp; Stylists</div>
-          <div class="page-sub" data-en="Add, remove, and customize outlets and team members" data-zh="自定义分店及团队成员">Add, remove, and customize outlets and team members</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="sec-label" data-en="Add New Outlet" data-zh="添加新分店">Add New Outlet</div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <input class="inp" id="new-outlet-name" style="flex:1" placeholder="e.g. APT Hair Salon — Petaling Jaya"
-            onkeydown="if(event.key==='Enter')addOutlet()">
-          <button class="btn-red" style="width:auto;padding:0 22px;margin:0" onclick="addOutlet()" data-en="Add" data-zh="添加">Add</button>
-        </div>
-        <div style="margin-top:24px">
-          <div class="sec-label" data-en="All Outlets" data-zh="所有分店">All Outlets</div>
-          <div id="outlets-list"></div>
-        </div>
-      </div>
+<!-- MANAGE -->
+<div id="screen-manage" class="page hidden">
+  <div class="page-head">
+    <div>
+      <div class="page-title" data-en="Manage Outlets & Stylists" data-zh="管理分店与发型师">Manage Outlets &amp; Stylists</div>
+      <div class="page-sub" data-en="Add, remove, and customize outlets and team members" data-zh="自定义分店及团队成员">Add, remove, and customize outlets and team members</div>
     </div>
+  </div>
+  <div class="card">
+    <div class="sec-label" data-en="Add New Outlet" data-zh="添加新分店">Add New Outlet</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <input class="inp" id="new-outlet-name" style="flex:1" placeholder="e.g. APT Hair Salon — Petaling Jaya"
+        onkeydown="if(event.key==='Enter')addOutlet()">
+      <button class="btn-red" style="width:auto;padding:0 22px;margin:0" onclick="addOutlet()" data-en="Add" data-zh="添加">Add</button>
+    </div>
+    <div style="margin-top:24px">
+      <div class="sec-label" data-en="All Outlets" data-zh="所有分店">All Outlets</div>
+      <div id="outlets-list"></div>
+    </div>
+  </div>
+</div>
+```
 
   </div><!-- /main -->
 </div><!-- /app -->
 
 <!-- REPORT MODAL -->
+
 <div id="report-modal" class="modal-overlay hidden" onclick="if(event.target===this)closeReportModal()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <div class="modal-title">⬇ <span data-en="Export Report" data-zh="导出报告">Export Report</span></div>
@@ -381,7 +393,23 @@
   </div>
 </div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBv4k7pXwja2jZ0UIDM8hzWp9qH8GcBLIY",
+  authDomain: "campaignapt.firebaseapp.com",
+  databaseURL: "https://campaignapt-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "campaignapt",
+  storageBucket: "campaignapt.firebasestorage.app",
+  messagingSenderId: "376372746140",
+  appId: "1:376372746140:web:59f058331f464088935a59"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 // ── CONSTANTS ─────────────────────────────────────────────────────────────────
 const MANAGER_PASSWORD = "apt2024";
 const CHECKLIST = [
@@ -414,29 +442,54 @@ function monthKey(d) { return d.slice(0,7); }
 function gradeEntry(e) { return CHECKLIST.every(c => e[c.id] === true) ? "PASS" : "FAIL"; }
 function t(en, zh) { return lang === "zh" ? zh : en; }
 
-// ── STORAGE ───────────────────────────────────────────────────────────────────
+// ── FIREBASE STORAGE ──────────────────────────────────────────────────────────
 async function loadData(key) {
-  try { const r = await window.storage.get(key); return r ? JSON.parse(r.value) : null; } catch { return null; }
+  try {
+    const snapshot = await get(ref(db, key));
+    return snapshot.exists() ? snapshot.val() : null;
+  } catch { return null; }
 }
 async function saveData(key, value) {
-  try { await window.storage.set(key, JSON.stringify(value)); } catch {}
+  try { await set(ref(db, key), value); } catch(e) { console.error("Firebase write error:", e); }
 }
-const KEYS = { outlets:"apt:outlets", entries:"apt:entries" };
 
-async function persistOutlets() { await saveData(KEYS.outlets, outlets); }
-async function persistEntries() { await saveData(KEYS.entries, entries); }
+async function persistOutlets() { await saveData('apt/outlets', outlets); }
+async function persistEntries() { await saveData('apt/entries', entries); }
+
+// ── REAL-TIME LISTENERS ───────────────────────────────────────────────────────
+function setupListeners() {
+  onValue(ref(db, 'apt/outlets'), (snapshot) => {
+    if (snapshot.exists()) {
+      outlets = snapshot.val();
+      if (!activeOutlet || !outlets.find(o=>o.id===activeOutlet)) {
+        activeOutlet = outlets[0]?.id || null;
+        selStylist = outlets[0]?.stylists[0] || '';
+      }
+      renderSidebar();
+      if (currentScreen==='dashboard') renderDashboard();
+      else if (currentScreen==='manage') renderManage();
+      else if (currentScreen==='checklist') renderChecklist();
+    }
+  });
+  onValue(ref(db, 'apt/entries'), (snapshot) => {
+    entries = snapshot.exists() ? snapshot.val() : [];
+    if (currentScreen==='dashboard') renderDashboard();
+  });
+}
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 (async () => {
-  const o = await loadData(KEYS.outlets);
-  const e = await loadData(KEYS.entries);
+  const o = await loadData('apt/outlets');
+  const e = await loadData('apt/entries');
   outlets = o || JSON.parse(JSON.stringify(DEFAULT_OUTLETS));
   entries = e || [];
+  if (!o) await persistOutlets();
   activeOutlet = outlets[0]?.id || null;
   expandedOutlet = activeOutlet;
   selStylist = outlets[0]?.stylists[0] || "";
   renderLogos();
   renderLoginLang();
+  setupListeners();
 })();
 
 // ── LOGO SVG ──────────────────────────────────────────────────────────────────
@@ -834,6 +887,7 @@ function generateReport(outlet, filterMonthVal, fromDate, toDate) {
 
   const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>APT Report</title>
 <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;color:#1a1a1a;font-size:13px}.page{padding:40px 48px;max-width:860px;margin:0 auto}.header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;border-bottom:3px solid #E01F1F;margin-bottom:24px}.brand{font-size:30px;font-weight:900;color:#E01F1F;letter-spacing:5px}.brand-sub{font-size:9px;color:#999;letter-spacing:3px;text-transform:uppercase;margin-top:2px}.report-info h1{font-size:17px;font-weight:700;margin-bottom:6px;text-align:right}.report-info p{font-size:11px;color:#555;text-align:right;margin-top:2px}.kpi-row{display:flex;gap:12px;margin-bottom:24px}.kpi{flex:1;border:1px solid #e0e0e0;border-radius:8px;padding:14px 16px;text-align:center}.kpi .v{font-size:30px;font-weight:900}.kpi .l{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-top:3px}.sec{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E01F1F;margin:20px 0 8px}table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:4px}th{background:#f5f5f5;padding:8px 10px;text-align:left;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;border-bottom:2px solid #ddd}td{padding:7px 10px;border-bottom:1px solid #f0f0f0;color:#333}tr:nth-child(even) td{background:#fafafa}.g{color:#16a34a;font-weight:700}.r{color:#dc2626;font-weight:700}.y{color:#d97706;font-weight:700}.bar-bg{height:6px;background:#eee;border-radius:3px;display:inline-block;width:80px;vertical-align:middle}.bar-fill{height:6px;border-radius:3px;display:inline-block}.footer{margin-top:36px;padding-top:12px;border-top:1px solid #e5e5e5;display:flex;justify-content:space-between;font-size:10px;color:#aaa}</style>
+
 </head><body><div class="page">
 <div class="header"><div><div class="brand">APT</div><div class="brand-sub">Hair Salon</div></div>
 <div class="report-info"><h1>${t("Campaign Performance Report","活动绩效报告")}</h1>
@@ -851,12 +905,13 @@ ${filtered.length?`<div class="sec" style="margin-top:24px">${t("Full Entry Deta
 <div class="footer"><span>APT Hair Salon — Campaign Performance Tracker</span><span>${t("Confidential","保密文件")} · ${new Date().toLocaleString()}</span></div>
 </div></body></html>`;
 
-  const blob = new Blob([html], {type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = `APT_Report_${outlet.name.replace(/\s+/g,'_')}_${periodLabel.replace(/[\s~]/g,'_')}.html`;
-  a.click(); URL.revokeObjectURL(url);
+const blob = new Blob([html], {type:‘text/html’});
+const url = URL.createObjectURL(blob);
+const a = document.createElement(‘a’);
+a.href = url; a.download = `APT_Report_${outlet.name.replace(/\s+/g,'_')}_${periodLabel.replace(/[\s~]/g,'_')}.html`;
+a.click(); URL.revokeObjectURL(url);
 }
 </script>
+
 </body>
 </html>
